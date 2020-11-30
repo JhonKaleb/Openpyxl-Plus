@@ -158,4 +158,4 @@ Openpyxl-plus is an [emailware](https://en.wiktionary.org/wiki/emailware). Meani
 
 This software uses the following open source packages:
 
-- [Openpyxl](https://openpyxl.readthedocs.io/en/stable/
+- ![Openpyxl](https://openpyxl.readthedocs.io/en/stable/
