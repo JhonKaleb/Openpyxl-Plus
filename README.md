@@ -8,7 +8,6 @@
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
   <a href="#credits">Credits</a>
 </p>
 
@@ -35,11 +34,120 @@ $ cd Openpyxl-Plus
 # Install dependencies
 $ pip install openpyxl
 
-# If you already have openpyxl in your project, you can copy the files in this repository folder to your openpyxl library folder
+# If you already have openpyxl in your project, you can copy the files in this repository folder to your openpyxl library folder:
+# Move workbook_plus.py to site-packages/openpyxl/workbook
+# Move worksheet_plus.py to site-packages/openpyxl/worksheet
 ```
 
-## Usage exemple
+### Usage exemple
+#### Simple header and table
+Below is an example of how to generate a table with a simple header from an array.
 
+``` Python
+# Importing the workbookplus
+from openpyxl.workbook.workbook_plus import WorkbookPlus
+
+# Creating an workbook and an worksheet
+workbook = WorkbookPlus()
+
+# When you start a WorkbookPlus object, its already comes with an sheet
+worksheet = workbook.active
+
+# But if you need more sheets, you can do this:
+# worksheet = workbook.create_sheet("sheet name")
+
+header_full_row = [["Fruits price and quantity"]]
+header_table = [["Fruit", "Price", "Quantity"]]
+
+fruits = [
+    ["apple", 10.99, 50],
+    ["banana", 15.99, 30],
+    ["Strawberry", 20.99, 40]
+    ]
+
+# Setting fruits table in the worksheet
+worksheet.set_values_with_array(fruits)
+
+# Setting the two headers with diferent stylization
+worksheet.set_header(header_table, merge_header_entire_row=False)
+worksheet.set_header(header_full_row, merge_header_entire_row=True)
+
+# Saving the spreadsheet generated with Fruits_sheet.xlsx file name
+workbook.save("Fruits_sheet.xlsx")
+
+```
+This source code will generate the sheet below.
+
+![usage-1-result](https://github.com/JhonKaleb/utils-repository/blob/main/openpyxl-plus/usage-1-result.png)
+
+#### Seting values to a specific column and persist header
+
+Exemple of to how merge multiple rows and create a header that persists on all tabs of the spreadsheet.
+``` Python
+# Importing the workbookplus
+from openpyxl.workbook.workbook_plus import WorkbookPlus
+
+workbook = WorkbookPlus()
+worksheet_1 = workbook.active
+worksheet_2 = workbook.create_sheet("second sheet")
+
+header = [["Sales in 2019"]]
+column1 = ["jan", "feb", "mar"]
+column2 = [1000, 2000, 15000]
+
+# Setting values to an specifc column
+worksheet_1.set_column_values(column1, column=1)
+worksheet_1.set_column_values(column1, column=2)
+
+# Setting a header to both sheet_1 and sheet_2
+workbook.set_header_in_all_sheets(header, merge_header_entire_row=True)
+
+# Saving the spreadsheet generated with Sales.xlsx file name
+workbook.save("Sales.xlsx")
+```
+This source code will generate the sheet below.
+
+* Tabs
+
+![usage-2-result-tabs](https://github.com/JhonKaleb/utils-repository/blob/main/openpyxl-plus/usage-2-result-tabs.png)
+
+* Default sheet
+
+![usage-2-result](https://github.com/JhonKaleb/utils-repository/blob/main/openpyxl-plus/usage-2-result.png)
+
+* Second Sheet
+
+![usage-2-results-second-sheet](https://github.com/JhonKaleb/utils-repository/blob/main/openpyxl-plus/usage-2-results-second-sheet.png)
+
+
+#### Seting values to a specifc row and Merging ranges in multiple rows
+``` Python
+# Importing the workbookplus
+from openpyxl.workbook.workbook_plus import WorkbookPlus
+
+workbook = WorkbookPlus()
+worksheet_1 = workbook.active
+
+row1 = ["jan", "feb", "/mar/aph/mai"]
+row2 = [1000, 12000, 4000]
+row3 = [2000, 13000, 5000]
+row4 = [3000, 14000, 6000]
+
+
+# Setting values to an specifc row
+worksheet_1.set_row_values(row1, row=1)
+worksheet_1.set_row_values(row2, row=2)
+worksheet_1.set_row_values(row3, row=3)
+worksheet_1.set_row_values(row4, row=4)
+# In this case is better use set_values_with_array(), but is just an method example :D
+
+worksheet_1.merge_range(3, 5, 1, 4)
+
+workbook.save("test.xlsx")
+```
+This source code will generate the sheet below.
+
+![usage-3-result](https://github.com/JhonKaleb/utils-repository/blob/main/openpyxl-plus/usage-3-result.png)
 
 
 ## Emailware
