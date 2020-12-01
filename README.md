@@ -33,6 +33,9 @@ $ cd Openpyxl-Plus
 # Install dependencies
 $ pip install openpyxl
 
+# Or using requirements.txt
+$ pip install -r requirements.txt
+
 # If you already have openpyxl in your project, you can copy the files in this repository folder to your openpyxl library folder:
 # Move workbook_plus.py to site-packages/openpyxl/workbook
 # Move worksheet_plus.py to site-packages/openpyxl/worksheet
