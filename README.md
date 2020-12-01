@@ -11,12 +11,11 @@
   <a href="#credits">Credits</a>
 </p>
 
-![screenshot](gif)
-
 ## Key Features
 
 * Set values - You can set values in any columns and rows in a easy way
 * Create headers - You can easily insert an header in any sheet or all sheets at once.
+* Merge multiple rows- You can merge multiple rows in an range at once.
 
 ## How To Use
 
