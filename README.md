@@ -140,6 +140,7 @@ worksheet_1.set_row_values(row3, row=3)
 worksheet_1.set_row_values(row4, row=4)
 # In this case is better use set_values_with_array(), but is just an method example :D
 
+# Merging each row 1 to 4, from te column 3(C) to column 5(E)
 worksheet_1.merge_range(3, 5, 1, 4)
 
 workbook.save("test.xlsx")
