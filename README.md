@@ -46,17 +46,10 @@ $ pip install -r requirements.txt
 Below is an example of how to generate a table with a simple header from an array.
 
 ``` Python
-# Importing the workbookplus
 from openpyxl.workbook.workbook_plus import WorkbookPlus
 
-# Creating an workbook and an worksheet
 workbook = WorkbookPlus()
-
-# When you start a WorkbookPlus object, its already comes with an sheet
 worksheet = workbook.active
-
-# But if you need more sheets, you can do this:
-# worksheet = workbook.create_sheet("sheet name")
 
 header_full_row = [["Fruits price and quantity"]]
 header_table = [["Fruit", "Price", "Quantity"]]
@@ -86,7 +79,6 @@ This source code will generate the sheet below.
 
 Exemple of to how merge multiple rows and create a header that persists on all tabs of the spreadsheet.
 ``` Python
-# Importing the workbookplus
 from openpyxl.workbook.workbook_plus import WorkbookPlus
 
 workbook = WorkbookPlus()
@@ -104,7 +96,6 @@ worksheet_1.set_column_values(column1, column=2)
 # Setting a header to both sheet_1 and sheet_2
 workbook.set_header_in_all_sheets(header, merge_header_entire_row=True)
 
-# Saving the spreadsheet generated with Sales.xlsx file name
 workbook.save("Sales.xlsx")
 ```
 This source code will generate the sheet below.
